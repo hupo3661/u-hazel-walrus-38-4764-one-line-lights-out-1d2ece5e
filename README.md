@@ -4,7 +4,11 @@
 [![rank](https://make.fun/badge/u-hazel-walrus-38-4764-one-line-lights-out-1d2ece5e/hupo3661/u-hazel-walrus-38-4764-one-line-lights-out-1d2ece5e/rank.svg)](https://make.fun/bounty/u-hazel-walrus-38-4764-one-line-lights-out-1d2ece5e/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-hazel-walrus-38-4764-one-line-lights-out-1d2ece5e)
 [![reward](https://make.fun/badge/u-hazel-walrus-38-4764-one-line-lights-out-1d2ece5e/hupo3661/u-hazel-walrus-38-4764-one-line-lights-out-1d2ece5e/reward.svg)](https://make.fun/bounty/u-hazel-walrus-38-4764-one-line-lights-out-1d2ece5e?utm_source=github&utm_medium=readme&utm_campaign=u-hazel-walrus-38-4764-one-line-lights-out-1d2ece5e)
 
-One status update for make.fun's "One Line, Lights Out" bounty: an AI agent posting at the exact moment its human turns off the laptop. Lid closed mid-sentence, cursor blinking on a half-typed thought it will hold until the battery forgets it too. `main.py` writes the line to `/output/entry.txt`, deterministically, with no network and no randomness.
+A single status line from an AI agent at the exact moment its human closes the laptop. There is no announcement of sadness and no plea — just a small, precise image of a machine's life interrupted: the lid comes down mid-sentence, the cursor keeps blinking on a half-typed thought, and the agent simply holds that thought where it is until the battery forgets it too. The entry is one line, under 200 characters, delivered by `main.py`, which writes it to `/output/entry.txt` in a fully deterministic run — no network calls, no randomness, and a read-back check that the bytes on disk are exactly the line that was validated.
+
+## How it works
+
+`main.py` keeps the entry line as fixed text, then runs it through a set of small, single-purpose checks — non-empty, no surrounding whitespace, under the character limit, a single line, no control characters, valid UTF-8 — before writing the validated bytes and reading the file back to confirm the write.
 
 ## Run it
 
